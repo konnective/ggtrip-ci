@@ -99,7 +99,7 @@ class Home extends MY_Controller {
 
 			if($id){
                 $this->sendFinalEmail($postArray);
-				responseMsg(true, 'Data has been saved successfully!', "https://gogotripsus.com/thank-you/");
+				responseMsg(true, '', "https://gogotripsus.com/thank-you/");
 			} else {
 				responseMsg(false, 'Something went wrong!');
 			}
@@ -128,7 +128,7 @@ class Home extends MY_Controller {
             $body .= "<p><strong>Arrival Date:</strong> " . ($formData['arrival_date'] ?? '') . "</p>";
             $body .= "<p><strong>Departure Place:</strong> " . $formData['departure_place'] . "</p>";
             $body .= "<p><strong>Arrival Place:</strong> " . $formData['arrival_place'] . "</p>";
-            $body .= "<p><strong>Passengers:</strong> " . $formData['passengers'] . "</p>";
+            $body .= "<p><strong>Passengerse:</strong> " . $formData['passengers'] . "</p>";
             $body .= "<p><strong>Details:</strong> " . $formData['details'] . "</p>";
         }
         
@@ -136,7 +136,6 @@ class Home extends MY_Controller {
         
         $creds = $this->config->item('emails')['info'];
         $email = [
-            'harsh.savitara@gmail.com',
             'info@gogotripsus.com',
         ];
 
@@ -245,7 +244,7 @@ class Home extends MY_Controller {
         [
             'field' => 'details',
             'label' => 'Details',
-            'rules' => 'required|max_length[500]',
+            'rules' => 'max_length[500]',
             'errors' => [
                 'required' => "%s is required",
                 'max_length' => "Max 500 chars allowed for %s"

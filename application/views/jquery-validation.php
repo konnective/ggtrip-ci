@@ -157,7 +157,9 @@
                 success: function(response) {
                     deferred.resolve(response);
 
-                    window.location.href = response.redirect;
+                    if(response.redirect) {
+                        window.location.href = response.redirect;
+                    }
 
                     if(response.message) {
                         notify(response.message);
