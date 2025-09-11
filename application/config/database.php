@@ -102,6 +102,7 @@ switch (SERVER_NAME) {
     default:
         $db['default']['username'] = 'root';
         $db['default']['password'] = '';
-        $db['default']['database'] = 'gogotripsus';
+        // $db['default']['database'] = 'gogotripsus';
+        $db['default']['database'] = 'ggtrips';
         break;
 }

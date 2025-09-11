@@ -82,7 +82,6 @@ class Home extends MY_Controller {
 				'passengers' => $this->input->post('passengers'),
 				'email' => $this->input->post('email'),
 				'phone' => $this->input->post('phone'),
-				'details' => $this->input->post('details'),
 			];
 
 			if(!empty($_FILES['image']['name'])) {
@@ -125,18 +124,18 @@ class Home extends MY_Controller {
             $body .= "<p><strong>Email:</strong> " . $formData['email'] . "</p>";
             $body .= "<p><strong>Phone:</strong> +1" . $formData['phone'] . "</p>";
             $body .= "<p><strong>Departure Date:</strong> " . $formData['departure_date'] . "</p>";
-            $body .= "<p><strong>Arrival Date:</strong> " . ($formData['arrival_date'] ?? '') . "</p>";
+            $body .= "<p><strong>Arrival Date:</strong> " . (isset($formData['arrival_date']) ? $formData['arrival_date'] : '') . "</p>";
             $body .= "<p><strong>Departure Place:</strong> " . $formData['departure_place'] . "</p>";
             $body .= "<p><strong>Arrival Place:</strong> " . $formData['arrival_place'] . "</p>";
-            $body .= "<p><strong>Passengerse:</strong> " . $formData['passengers'] . "</p>";
-            $body .= "<p><strong>Details:</strong> " . $formData['details'] . "</p>";
+            $body .= "<p><strong>Passengers:</strong> " . $formData['passengers'] . "</p>";
         }
-        
+
         $body .= "<p><strong>Time:</strong> " . date('Y-m-d H:i:s') . "</p>";
-        
+
         $creds = $this->config->item('emails')['info'];
         $email = [
-            'info@gogotripsus.com',
+             'info@gogotripsus.com',
+            'kunj@savitarainfotel.in',
         ];
 
         $this->load->library('email');
@@ -199,7 +198,7 @@ class Home extends MY_Controller {
         [
             'field' => 'departure_date',
             'label' => 'Departure date',
-            'rules' => 'required|max_length[10]',
+            'rules' => 'required|max_length[50]',
             'errors' => [
                 'required' => "%s is required",
                 'max_length' => "Max 10 chars allowed for %s"
@@ -208,7 +207,7 @@ class Home extends MY_Controller {
         [
             'field' => 'arrival_date',
             'label' => 'Arrival date',
-            'rules' => 'callback_arrival_date|max_length[10]',
+            'rules' => 'callback_arrival_date|max_length[50]',
             'errors' => [
                 'required' => "%s is required",
                 'max_length' => "Max 10 chars allowed for %s"
@@ -241,15 +240,15 @@ class Home extends MY_Controller {
                 'max_length' => "Max 200 chars allowed for %s"
             ],
         ],
-        [
-            'field' => 'details',
-            'label' => 'Details',
-            'rules' => 'max_length[500]',
-            'errors' => [
-                'required' => "%s is required",
-                'max_length' => "Max 500 chars allowed for %s"
-            ],
-        ],
+        // [
+        //     'field' => 'details',
+        //     'label' => 'Details',
+        //     'rules' => 'max_length[500]',
+        //     'errors' => [
+        //         'required' => "%s is required",
+        //         'max_length' => "Max 500 chars allowed for %s"
+        //     ],
+        // ],
         [
             'field' => 'phone',
             'label' => 'Phone',

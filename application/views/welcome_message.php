@@ -25,7 +25,7 @@
 	<meta name="description"
 		content="Usa–India Fares From $999* — Personalized Quotes, Guaranteed Low Rates. Get 3 Best Fare Options In Just 10 Minutes." />
 	<link rel="canonical" href="https://gogotripsus.com/flight-booking/" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 	<!-- Favicons -->
 	<link href="<?= site_url() ?>assets/img/favicon.png" rel="icon">
@@ -48,9 +48,11 @@
 	<!--  -->
 	<!-- SweetAlert2 CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+	<!-- date selector -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+
 	<!-- Main CSS File -->
 	<link href="<?= site_url() ?>assets/css/main.css" rel="stylesheet">
-
 
 	<style>
 		.step-icon img {
@@ -285,9 +287,44 @@
 			height: 220px;
 			border: none;
 		}
+    .extra-contact-icons {
+        display: flex;
+        /* top: 80px;
+        left: 50%; */
+        background-color: #fff;
+				justify-content: center;
+        padding: 1rem 1.5rem;
+        border-radius: 25px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 5000;
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+    .extra-contact-icons a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        transition: color 0.3s
+    }
+	.step-card {
+      background-color: #fff;
+      border-radius: 23px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .step-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+		.card-body {
+			text-align: center;
+		}
 
 		@media (min-width: 768px) {
-
 			iframe,
 			video {
 				height: 300px;
@@ -332,9 +369,19 @@
 				</ul>
 			</nav>
 			<div class="order-2">
-				<span class="text-white me-2 d-md-inline-block d-none"><a href="tel:+1 (229) 329-1796"
-						class="text-white">📞 +1 (229) 329-1796</a></span>
-				<a class="btn-getstarted" id="scrollTopBtn" href="javascript:;">Get 10% Off Now</a>
+				<div class="row">
+					<div class="col-lg-7 d-none d-lg-flex align-items-center">
+						<span class="text-white me-2 d-md-inline-block d-none"><a href="tel:+1 (229) 329-1796"
+								class="text-white">📞 +1 (229) 329-1796</a></span>
+					</div>
+					<div class="col-lg-5 col-md-12 col-sm-12">
+						<div class="extra-contact-icons">
+							<a href="tel:+1 (229) 329-1796" title="Call"><i class="fas fa-phone"></i></a>
+							<a href="https://w.meta.me/s/1VjD9RIXA2l48dm" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+							<a href="mailto:info@gogotripsus.com?subject=Travel Inquiry" title="Email"><i class="fas fa-envelope"></i></a>
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -404,10 +451,8 @@
 								<p class="mb-3 fs-3">Share Your Fare Screenshot - <br>We'll beat the price</p>
 								<p class="fw-medium">If we can't, enjoy $50 off your next journey as our gift.</p>
 								<div class="contact-icons mt-3">
-									<a href="tel:+1 229 329-1796" class="me-3 fs-3"><i
-											class="bi bi-telephone-fill call-icon me-2"></i>Call</a>
 									<a href="https://w.meta.me/s/1VjD9RIXA2l48dm" class="fs-3"><i
-											class="bi bi-whatsapp whatsapp-icon"></i>WhatsApp</a>
+											class="bi bi-whatsapp whatsapp-icon"></i>Share Screenshot</a>
 								</div>
 							</div>
 						</div>
@@ -438,10 +483,10 @@
 							<input name="type" class="form-control" value="round-trip" hidden />
 							<div class="row g-2 mb-3">
 								<div class="col-md-6 col-sm-6">
-									<input type="date" name="departure_date" placeholder="Departure Date" class="form-control" required />
+									<input name="departure_date" placeholder="Departure Date" class="form-control custom-date-show" readonly required />
 								</div>
 								<div class="col-md-6 col-sm-6">
-									<input type="date" name="arrival_date" placeholder="Return Date" class="form-control" required />
+									<input type="text" name="arrival_date" placeholder="Return Date" class="form-control custom-date-show" readonly required />
 								</div>
 							</div>
 							<!-- Route 1 & 2 -->
@@ -467,13 +512,13 @@
 								<div class="col-md-6">
 									<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required maxlength="12" />
 								</div>
-								<div class="col-md-6">
+								<!-- <div class="col-md-6">
 									<label for="screen-shots">Upload Your Screenshot</label>
 									<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
 								</div>
 								<div class="col-md-6">
 									<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
-								</div>
+								</div> -->
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn-get-started">Get Your Fare In 10 Minutes</button>
@@ -491,23 +536,23 @@
 								<!-- Departure Date Only -->
 								<div class="row g-2 mb-3">
 									<div class="col-md-12">
-										<input type="date" name="departure_date" placeholder="Departure Date" class="form-control" required />
+										<input type="text" name="departure_date" placeholder="Departure Date" class="form-control custom-date-show" readonly required />
 									</div>
 
 									<!-- Single Route -->
 									<div class="row g-2">
 										<div class="col-md-6">
 											<input type="text" name="departure_place" placeholder="Departure place" class="form-control" required maxlength="200" />
-										</div>										
+										</div>
 										<div class="col-md-6">
 											<input type="text" name="arrival_place" placeholder="Arrival place" class="form-control" required maxlength="200" />
-										</div>										
+										</div>
 									</div>
 
 									<div class="row g-2 mb-3">
 										<div class="col-md-6">
 											<input type="text" class="form-control mb-2" name="full_name" placeholder="Full Name" required maxlength="200" />
-										</div>										
+										</div>
 										<div class="col-md-6">
 											<input type="number" class="form-control" name="passengers" placeholder="Number Of Passengers" required max="500" />
 										</div>
@@ -517,13 +562,13 @@
 										<div class="col-md-6">
 											<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required maxlength="12" />
 										</div>
-										<div class="col-md-6">
+										<!-- <div class="col-md-6">
 											<label for="screen-shots">Upload Your Screenshot</label>
 											<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
 										</div>
 										<div class="col-md-6">
 											<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
-										</div>
+										</div> -->
 									</div>
 									<div class="text-center">
 										<button type="submit" class="btn-get-started">Get Your Fare In 10
@@ -553,7 +598,7 @@
               "loop": true,
               "speed": 600,
               "autoplay": {
-                "delay": 5000
+                "delay": 1000
               },
               "slidesPerView": "auto",
               "pagination": {
@@ -621,12 +666,10 @@
 			</div><!-- End Section Title -->
 
 			<div class="container" data-aos="fade-up" data-aos-delay="100">
-
-				<div class="steps-section">
+				<!-- <div class="steps-section">
 					<div class="step-line"></div>
 					<div class="container">
 						<div class="d-flex overflow-x-auto white-space-nowrap">
-
 							<div class=" step-wrapper mb-4">
 								<div class="step-icon"><img src="<?= site_url() ?>assets/img/stepper1.png" alt=""></div>
 								<div class="text-center">
@@ -663,14 +706,56 @@
 										last-minute needs or travel queries.</p>
 								</div>
 							</div>
-
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div class="container py-5">
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+					<!-- Card 1 -->
+					<div class="col-6 col-xl-3">
+						<div class="step-card h-100">
+							<div class="card-body">
+								<div class="step-icon"><img src="<?= site_url() ?>assets/img/stepper1.png" alt=""></div>
+								<div class="step-title">Step 1 – Instant Confirmation</div>
+								<p class="mb-0">E-tickets sent to email & WhatsApp in minutes.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Card 2 -->
+					<div class="col-6 col-xl-3">
+						<div class="step-card h-100">
+							<div class="card-body">
+								<div class="step-icon"><img src="<?= site_url() ?>assets/img/stepper2.png" alt=""></div>
+								<div class="step-title">Step 2 – Travel Setup</div>
+								<p class="mb-0">Seats, meals, baggage & special requests handled.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Card 3 -->
+					<div class="col-6 col-xl-3">
+						<div class="step-card h-100">
+							<div class="card-body">
+								<div class="step-icon"><img src="<?= site_url() ?>assets/img/stepper3.png" alt=""></div>
+								<div class="step-title">Step 3 – Live Updates</div>
+								<p class="mb-0">Flight tracking, gate & delay alerts, check-in reminders.</p>
+							</div>
+						</div>
+					</div>
+					<!-- Card 4 -->
+					<div class="col-6 col-xl-3">
+						<div class="step-card h-100">
+							<div class="card-body">
+								<div class="step-icon"><img src="<?= site_url() ?>assets/img/stepper4.png" alt=""></div>
+								<div class="step-title">Step 4 – 24/7 Support</div>
+								<p class="mb-0">WhatsApp or call anytime for urgent help & queries.</p>
+							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</section><!-- /Services Section -->
+
 
 		<!-- Work Process Section -->
 		<section id="work-process" class="work-process section light-background">
@@ -796,39 +881,60 @@
 
 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5 py-lg-5 text-center justify-content-center">
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Ahmedabad.png" alt="" class="img-fluid motion"
-							width="120">
-						<h4 class="pt-2">USA to Ahmedabad</h4>
+						<a href="https://wa.link/mnhaj5">
+								<img src="<?= site_url() ?>assets/img/Ahmedabad.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Ahmedabad</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Mumbai.png" alt="" class="img-fluid motion" width="120">
-						<h4 class="pt-2">Usa to Mumbai</h4>
+						<a href="”https://wa.link/mmeil0">
+								<img src="<?= site_url() ?>assets/img/Mumbai.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">Usa to Mumbai</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Bengaluru.png" alt="" class="img-fluid motion"
-							width="120">
-						<h4 class="pt-2">USA to Bengaluru</h4>
+						<a href="https://wa.link/2wnau4">
+								<img src="<?= site_url() ?>assets/img/Bengaluru.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Bengaluru</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Hyderabad.png" alt="" class="img-fluid motion"
-							width="120">
-						<h4 class="pt-2">USA to Hyderabad</h4>
+						<a href="https://wa.link/z6ubwa">
+								<img src="<?= site_url() ?>assets/img/Hyderabad.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Hyderabad</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Delhi.png" alt="" class="img-fluid motion" width="120">
-						<h4 class="pt-2">USA to Delhi</h4>
+						<a href="https://wa.link/x47z8r">
+								<img src="<?= site_url() ?>assets/img/Delhi.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Delhi</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Chennai.png" alt="" class="img-fluid motion" width="120">
-						<h4 class="pt-2"> USA to Chennai</h4>
+						<a href="https://wa.link/y5fk84">
+								<img src="<?= site_url() ?>assets/img/Chennai.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Chennai</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Kolkata.png" alt="" class="img-fluid motion" width="120">
-						<h4 class="pt-2">USA to Kolkata</h4>
+						<a href="https://wa.link/sght4a">
+								<img src="<?= site_url() ?>assets/img/Kolkata.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Kolkata</h4>
+						</a>
 					</div>
 					<div class="col up-down">
-						<img src="<?= site_url() ?>assets/img/Amritsar.png" alt="" class="img-fluid motion" width="120">
-						<h4 class="pt-2">USA to Amritsar</h4>
+						<a href="https://wa.link/473u8l">
+								<img src="<?= site_url() ?>assets/img/Amritsar.png" alt="" class="img-fluid motion"
+								width="120">
+								<h4 class="pt-2">USA to Amritsar</h4>
+						</a>
 					</div>
 				</div>
 				<div class="text-center">
@@ -1243,6 +1349,94 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+	<!-- <script>
+	  document.addEventListener('DOMContentLoaded', function () {
+	    const dateInputs = document.querySelectorAll('.custom-date-show');
+
+	    dateInputs.forEach(function(input) {
+	      new Pikaday({
+	        field: input,
+	        format: 'YYYY-MM-DD',
+	        minDate: new Date()
+	      });
+	    });
+	  });
+	</script> -->
+
+	<!-- <script>
+			document.addEventListener('DOMContentLoaded', function () {
+			  const dateInputs = document.querySelectorAll('.custom-date-show');
+
+				  dateInputs.forEach(function(input) {
+				    new Pikaday({
+				      field: input,
+				      format: 'YYYY-MM-DD',
+				      minDate: new Date(),
+				      toString(date, format) {
+				        const day = String(date.getDate()).padStart(2, '0');
+				        const month = String(date.getMonth() + 1).padStart(2, '0');
+				        const year = date.getFullYear();
+				        return `${year}-${month}-${day}`;
+				      }
+				    });
+				  });
+			});
+	</script> -->
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+	    const departureInputs = document.querySelectorAll('input[name="departure_date"]');
+
+	    departureInputs.forEach(function(departureInput) {
+	        const arrivalInput = departureInput
+	            .closest('form')
+	            .querySelector('input[name="arrival_date"]');
+
+	        let arrivalPicker = null;
+
+	        // Departure Date Picker
+	        const departurePicker = new Pikaday({
+	            field: departureInput,
+	            format: 'YYYY-MM-DD',
+	            minDate: new Date(),
+	            toString(date) {
+	                const day = String(date.getDate()).padStart(2, '0');
+	                const month = String(date.getMonth() + 1).padStart(2, '0');
+	                const year = date.getFullYear();
+	                return `${year}-${month}-${day}`;
+	            },
+	            onSelect: function(date) {
+	                if (arrivalPicker) {
+	                    arrivalPicker.setMinDate(date);
+	                    if (arrivalInput.value && new Date(arrivalInput.value) < date) {
+	                        arrivalInput.value = ''; // clear invalid arrival date
+	                    }
+	                }
+	            }
+	        });
+
+	        // If arrival date exists in this form, set it up
+	        if (arrivalInput) {
+	            arrivalPicker = new Pikaday({
+	                field: arrivalInput,
+	                format: 'YYYY-MM-DD',
+	                minDate: new Date(),
+	                toString(date) {
+	                    const day = String(date.getDate()).padStart(2, '0');
+	                    const month = String(date.getMonth() + 1).padStart(2, '0');
+	                    const year = date.getFullYear();
+	                    return `${year}-${month}-${day}`;
+	                }
+	            });
+	        }
+	    });
+	});
+	</script>
+
+
+
 	<script>
 
 		document.getElementById('scrollTopBtn').addEventListener('click', function () {
