@@ -11,6 +11,15 @@ class Home extends MY_Controller {
 			return $this->load->view('welcome_message');
 		}
 	}
+	public function inquiries()
+	{
+		if($this->input->is_ajax_request()) {
+		} else {
+            $query = $this->db->get('inquiries');
+            $data['inquiries'] = $query->result_array();
+            return $this->load->view('inquiries', $data);
+		}
+	}
 
 	public function error_404()
 	{
