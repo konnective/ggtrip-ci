@@ -29,12 +29,13 @@
                                                   <th scope="col">#</th>
                                                   <th scope="col">Type</th>
                                                   <th scope="col">Name</th>
+                                                  <th scope="col">Email</th>
                                                   <th scope="col">Phone</th>
                                                   <th scope="col">Departure Place</th>
                                                   <th scope="col">Arrival Place</th>
                                                   <th scope="col">Departure Date</th>
                                                   <th scope="col">Arrival Date</th>
-                                                  <!-- <th scope="col">Created At</th> -->
+                                                  <th scope="col">Created At</th>
                                              </tr>
                                         </thead>
                                         <tbody>
@@ -43,12 +44,13 @@
                                                             <th scope="row"><?php echo $item['id']; ?></th>
                                                             <td><?php echo $item['type']; ?></td>
                                                             <td><?php echo $item['full_name']; ?></td>
+                                                            <td><?php echo $item['email']; ?></td>
                                                             <td><?php echo $item['phone']; ?></td>
                                                             <td><?php echo $item['departure_place']; ?></td>
                                                             <td><?php echo $item['arrival_place']; ?></td>
                                                             <td><?php echo $item['departure_date']; ?></td>
                                                             <td><?php echo $item['arrival_date']; ?></td>
-                                                            <!-- <td><?php echo date('Y-m-d H:i', strtotime($item['created_at'])); ?></td> -->
+                                                            <td><?php echo date('Y-m-d H:i', strtotime($item['created_at'])); ?></td>
                                                             <!-- <td>john.smith@email.com</td>
                                                             <td>Product Information</td>
                                                             <td class="text-truncate" style="max-width: 200px;">

@@ -15,7 +15,10 @@ class Home extends MY_Controller {
 	{
 		if($this->input->is_ajax_request()) {
 		} else {
-            $query = $this->db->get('inquiries');
+            $this->db->select('*');
+            $this->db->from('inquiries');
+            $this->db->order_by('id', 'DESC');
+            $query = $this->db->get(); 
             $data['inquiries'] = $query->result_array();
             return $this->load->view('inquiries', $data);
 		}
