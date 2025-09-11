@@ -94,6 +94,7 @@ class Home extends MY_Controller {
 				'passengers' => $this->input->post('passengers'),
 				'email' => $this->input->post('email'),
 				'phone' => $this->input->post('phone'),
+                'created_at' => date('Y-m-d H:i:s'),
 			];
 
 			if(!empty($_FILES['image']['name'])) {
@@ -146,7 +147,7 @@ class Home extends MY_Controller {
 
         $creds = $this->config->item('emails')['info'];
         $email = [
-             'info@gogotripsus.com',
+            //  'info@gogotripsus.com',
             'kunj@savitarainfotel.in',
         ];
 
