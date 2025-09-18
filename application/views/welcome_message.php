@@ -1,10 +1,10 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<script>
-		(function (w, d, s, l, i) {
+		(function(w, d, s, l, i) {
 			w[l] = w[l] || [];
 			w[l].push({
 				'gtm.start': new Date().getTime(),
@@ -162,6 +162,13 @@
 			background: #e91e63;
 		}
 
+		.phone-group {
+			display: flex;
+		}
+		.country-code-select{
+			max-width: 103px;;
+		}
+
 		@keyframes fly {
 			0% {
 				transform: translateY(0) rotate(0deg);
@@ -287,44 +294,51 @@
 			height: 220px;
 			border: none;
 		}
-    .extra-contact-icons {
-        display: flex;
-        /* top: 80px;
+
+		.extra-contact-icons {
+			display: flex;
+			/* top: 80px;
         left: 50%; */
-        background-color: #fff;
-				justify-content: center;
-        padding: 1rem 1.5rem;
-        border-radius: 25px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 5000;
-        flex-direction: row;
-        gap: 1.5rem;
-    }
-    .extra-contact-icons a {
-        font-size: 1.5rem;
-        text-decoration: none;
-        transition: color 0.3s
-    }
-	.step-card {
-      background-color: #fff;
-      border-radius: 23px;
-      padding: 30px 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .step-card {
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .step-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
+			background-color: #fff;
+			justify-content: center;
+			padding: 1rem 1.5rem;
+			border-radius: 25px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+			z-index: 5000;
+			flex-direction: row;
+			gap: 1.5rem;
+		}
+
+		.extra-contact-icons a {
+			font-size: 1.5rem;
+			text-decoration: none;
+			transition: color 0.3s
+		}
+
+		.step-card {
+			background-color: #fff;
+			border-radius: 23px;
+			padding: 30px 20px;
+			text-align: center;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.step-card {
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.step-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		}
+
 		.card-body {
 			text-align: center;
 		}
 
 		@media (min-width: 768px) {
+
 			iframe,
 			video {
 				height: 300px;
@@ -406,15 +420,15 @@
 					<p class="text-muted small mb-4">Get your quote in 10 minutes – no spam, no bots.</p>
 
 					<?= form_open('', 'class="ajax-form"') ?>
-						<div class="mb-2">
-							<input type="text" name="type" value="quote" hidden>
-							<input type="email" name="email" class="form-control" placeholder="Email" required maxlength="200" />
-						</div>
-						<div class="mb-2"></div>
-						<div class="mb-3">
-							<input type="tel" name="phone" class="form-control" placeholder="Phone" required maxlength="12" />
-						</div>
-						<button type="submit" class="btn btn-secondary w-100 fw-semibold">Get My $999* Quote Now</button>
+					<div class="mb-2">
+						<input type="text" name="type" value="quote" hidden>
+						<input type="email" name="email" class="form-control" placeholder="Email" required maxlength="200" />
+					</div>
+					<div class="mb-2"></div>
+					<div class="mb-3">
+						<input type="tel" name="phone" class="form-control" placeholder="Phone" required maxlength="12" />
+					</div>
+					<button type="submit" class="btn btn-secondary w-100 fw-semibold">Get My $999* Quote Now</button>
 					<?= form_close() ?>
 				</div>
 			</div>
@@ -510,28 +524,41 @@
 									<input type="email" class="form-control mb-2" name="email" placeholder="Email Address" required maxlength="200" />
 								</div>
 								<div class="col-md-6">
+									<div class="phone-group">
+										<select name="country_code" class="form-select country-code-select" required>
+											<option value="+1">🇺🇸 +1</option>
+											<option value="+91" selected>🇮🇳 +91</option>
+										</select>
+										<input type="tel"
+											class="form-control phone-input flex-grow-1"
+											name="phone"
+											placeholder="Enter phone number"
+											required
+											maxlength="15" />
+									</div>
+									<!-- <div class="col-md-6">
 									<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required maxlength="12" />
-								</div>
-								<!-- <div class="col-md-6">
+								</div> -->
+									<!-- <div class="col-md-6">
 									<label for="screen-shots">Upload Your Screenshot</label>
 									<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
 								</div>
 								<div class="col-md-6">
 									<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
 								</div> -->
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn-get-started">Get Your Fare In 10 Minutes</button>
+								</div>
+								<?= form_close() ?>
+								<div class="mt-4 text-sm text-center">
+									<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
+								</div>
 							</div>
-							<div class="text-center">
-								<button type="submit" class="btn-get-started">Get Your Fare In 10 Minutes</button>
-							</div>
-							<?= form_close() ?>
-							<div class="mt-4 text-sm text-center">
-								<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
-							</div>
-						</div>
 
-						<!-- One Way Form -->
-						<div id="oneWayForm" style="display: none;">
-							<?= form_open('', 'class="ajax-form p-3 border rounded shadow-sm"') ?>
+							<!-- One Way Form -->
+							<div id="oneWayForm" style="display: none;">
+								<?= form_open('', 'class="ajax-form p-3 border rounded shadow-sm"') ?>
 								<input name="type" class="form-control" value="one-trip" hidden />
 								<!-- Departure Date Only -->
 								<div class="row g-2 mb-3">
@@ -576,14 +603,14 @@
 									</div>
 								</div>
 								<!-- Multi-City Form -->
-							<?= form_close() ?>
+								<?= form_close() ?>
 
-							<div class="mt-4 text-sm text-center">
-								<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
+								<div class="mt-4 text-sm text-center">
+									<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
 		</section><!-- /Hero Section -->
 
@@ -594,42 +621,42 @@
 
 				<div class="swiper init-swiper">
 					<script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 1000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 5,
-                  "spaceBetween": 120
-                },
-                "1200": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
+						{
+							"loop": true,
+							"speed": 600,
+							"autoplay": {
+								"delay": 1000
+							},
+							"slidesPerView": "auto",
+							"pagination": {
+								"el": ".swiper-pagination",
+								"type": "bullets",
+								"clickable": true
+							},
+							"breakpoints": {
+								"320": {
+									"slidesPerView": 2,
+									"spaceBetween": 40
+								},
+								"480": {
+									"slidesPerView": 3,
+									"spaceBetween": 60
+								},
+								"640": {
+									"slidesPerView": 4,
+									"spaceBetween": 80
+								},
+								"992": {
+									"slidesPerView": 5,
+									"spaceBetween": 120
+								},
+								"1200": {
+									"slidesPerView": 6,
+									"spaceBetween": 120
+								}
+							}
+						}
+					</script>
 					<div class="swiper-wrapper align-items-center">
 						<div class="swiper-slide"><img src="<?= site_url() ?>assets/img/clients/1.png" class="img-fluid"
 								alt=""></div>
@@ -882,58 +909,58 @@
 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-5 py-lg-5 text-center justify-content-center">
 					<div class="col up-down">
 						<a href="https://wa.link/mnhaj5">
-								<img src="<?= site_url() ?>assets/img/Ahmedabad.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Ahmedabad.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Ahmedabad</h4>
+							<h4 class="pt-2">USA to Ahmedabad</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="”https://wa.link/mmeil0">
-								<img src="<?= site_url() ?>assets/img/Mumbai.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Mumbai.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">Usa to Mumbai</h4>
+							<h4 class="pt-2">Usa to Mumbai</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/2wnau4">
-								<img src="<?= site_url() ?>assets/img/Bengaluru.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Bengaluru.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Bengaluru</h4>
+							<h4 class="pt-2">USA to Bengaluru</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/z6ubwa">
-								<img src="<?= site_url() ?>assets/img/Hyderabad.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Hyderabad.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Hyderabad</h4>
+							<h4 class="pt-2">USA to Hyderabad</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/x47z8r">
-								<img src="<?= site_url() ?>assets/img/Delhi.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Delhi.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Delhi</h4>
+							<h4 class="pt-2">USA to Delhi</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/y5fk84">
-								<img src="<?= site_url() ?>assets/img/Chennai.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Chennai.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Chennai</h4>
+							<h4 class="pt-2">USA to Chennai</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/sght4a">
-								<img src="<?= site_url() ?>assets/img/Kolkata.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Kolkata.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Kolkata</h4>
+							<h4 class="pt-2">USA to Kolkata</h4>
 						</a>
 					</div>
 					<div class="col up-down">
 						<a href="https://wa.link/473u8l">
-								<img src="<?= site_url() ?>assets/img/Amritsar.png" alt="" class="img-fluid motion"
+							<img src="<?= site_url() ?>assets/img/Amritsar.png" alt="" class="img-fluid motion"
 								width="120">
-								<h4 class="pt-2">USA to Amritsar</h4>
+							<h4 class="pt-2">USA to Amritsar</h4>
 						</a>
 					</div>
 				</div>
@@ -1232,10 +1259,10 @@
 							<span>24/7 Priority Support</span>
 						</div>
 						<?= form_open('', 'class="ajax-form news-form"') ?>
-							<input name="type" value="subscribe" hidden />
-							<input type="text" name="full_name" placeholder="Enter your name" required maxlength="200" />
-							<input type="email" name="email" placeholder="Enter your email" required maxlength="200" />
-							<input class="btn btn-danger newsletter-btn" type="submit" value="Join the VIP List">
+						<input name="type" value="subscribe" hidden />
+						<input type="text" name="full_name" placeholder="Enter your name" required maxlength="200" />
+						<input type="email" name="email" placeholder="Enter your email" required maxlength="200" />
+						<input class="btn btn-danger newsletter-btn" type="submit" value="Join the VIP List">
 						<?= form_close() ?>
 					</section>
 				</div>
@@ -1311,7 +1338,7 @@
 	<script src="<?= site_url() ?>assets/js/main.js"></script>
 	<script>
 		let skillIndex = 0;
-		document.addEventListener("DOMContentLoaded", function () {
+		document.addEventListener("DOMContentLoaded", function() {
 
 			if (window.history.replaceState) {
 				window.history.replaceState(null, null, window.location.href);
@@ -1386,60 +1413,59 @@
 			});
 	</script> -->
 	<script>
-	document.addEventListener('DOMContentLoaded', function () {
-	    const departureInputs = document.querySelectorAll('input[name="departure_date"]');
+		document.addEventListener('DOMContentLoaded', function() {
+			const departureInputs = document.querySelectorAll('input[name="departure_date"]');
 
-	    departureInputs.forEach(function(departureInput) {
-	        const arrivalInput = departureInput
-	            .closest('form')
-	            .querySelector('input[name="arrival_date"]');
+			departureInputs.forEach(function(departureInput) {
+				const arrivalInput = departureInput
+					.closest('form')
+					.querySelector('input[name="arrival_date"]');
 
-	        let arrivalPicker = null;
+				let arrivalPicker = null;
 
-	        // Departure Date Picker
-	        const departurePicker = new Pikaday({
-	            field: departureInput,
-	            format: 'YYYY-MM-DD',
-	            minDate: new Date(),
-	            toString(date) {
-	                const day = String(date.getDate()).padStart(2, '0');
-	                const month = String(date.getMonth() + 1).padStart(2, '0');
-	                const year = date.getFullYear();
-	                return `${year}-${month}-${day}`;
-	            },
-	            onSelect: function(date) {
-	                if (arrivalPicker) {
-	                    arrivalPicker.setMinDate(date);
-	                    if (arrivalInput.value && new Date(arrivalInput.value) < date) {
-	                        arrivalInput.value = ''; // clear invalid arrival date
-	                    }
-	                }
-	            }
-	        });
+				// Departure Date Picker
+				const departurePicker = new Pikaday({
+					field: departureInput,
+					format: 'YYYY-MM-DD',
+					minDate: new Date(),
+					toString(date) {
+						const day = String(date.getDate()).padStart(2, '0');
+						const month = String(date.getMonth() + 1).padStart(2, '0');
+						const year = date.getFullYear();
+						return `${year}-${month}-${day}`;
+					},
+					onSelect: function(date) {
+						if (arrivalPicker) {
+							arrivalPicker.setMinDate(date);
+							if (arrivalInput.value && new Date(arrivalInput.value) < date) {
+								arrivalInput.value = ''; // clear invalid arrival date
+							}
+						}
+					}
+				});
 
-	        // If arrival date exists in this form, set it up
-	        if (arrivalInput) {
-	            arrivalPicker = new Pikaday({
-	                field: arrivalInput,
-	                format: 'YYYY-MM-DD',
-	                minDate: new Date(),
-	                toString(date) {
-	                    const day = String(date.getDate()).padStart(2, '0');
-	                    const month = String(date.getMonth() + 1).padStart(2, '0');
-	                    const year = date.getFullYear();
-	                    return `${year}-${month}-${day}`;
-	                }
-	            });
-	        }
-	    });
-	});
+				// If arrival date exists in this form, set it up
+				if (arrivalInput) {
+					arrivalPicker = new Pikaday({
+						field: arrivalInput,
+						format: 'YYYY-MM-DD',
+						minDate: new Date(),
+						toString(date) {
+							const day = String(date.getDate()).padStart(2, '0');
+							const month = String(date.getMonth() + 1).padStart(2, '0');
+							const year = date.getFullYear();
+							return `${year}-${month}-${day}`;
+						}
+					});
+				}
+			});
+		});
 	</script>
 
 
 
 	<script>
-
-		document.getElementById('scrollTopBtn').addEventListener('click', function () {
+		document.getElementById('scrollTopBtn').addEventListener('click', function() {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth'
@@ -1450,17 +1476,17 @@
 		const arrivalInput = $('input[name="arrival_date"]');
 		const departureInput = $('input[name="departure_date"]');
 
-		arrivalInput.each(function () {
+		arrivalInput.each(function() {
 			$(this).attr('min', today);
 		});
 
-		departureInput.each(function () {
+		departureInput.each(function() {
 			$(this).attr('min', today);
 
 			const arrival = $(this).closest('.row').find('input[name="arrival_date"]');
 
 			if (arrival.length) {
-				$(this).change(function () {
+				$(this).change(function() {
 					arrival.attr('min', $(this).val());
 					arrival.val('');
 				});
@@ -1469,7 +1495,7 @@
 
 		let modalShown = false;
 
-		window.addEventListener('scroll', function () {
+		window.addEventListener('scroll', function() {
 			const scrollTop = window.scrollY || document.documentElement.scrollTop;
 			const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 			const scrollPercent = (scrollTop / docHeight) * 100;

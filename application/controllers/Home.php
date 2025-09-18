@@ -93,7 +93,7 @@ class Home extends MY_Controller {
 				'full_name' => $this->input->post('full_name'),
 				'passengers' => $this->input->post('passengers'),
 				'email' => $this->input->post('email'),
-				'phone' => $this->input->post('phone'),
+                'phone' => $this->input->post('country_code') . $this->input->post('phone'),
                 'created_at' => date('Y-m-d H:i:s'),
 			];
 
@@ -135,7 +135,7 @@ class Home extends MY_Controller {
             $body .= "<p><strong>Trip Type:</strong> " . $formData['type'] . "</p>";
             $body .= "<p><strong>Name:</strong> " . $formData['full_name'] . "</p>";
             $body .= "<p><strong>Email:</strong> " . $formData['email'] . "</p>";
-            $body .= "<p><strong>Phone:</strong> +1" . $formData['phone'] . "</p>";
+            $body .= "<p><strong>Phone:</strong> " . $formData['phone'] . "</p>";
             $body .= "<p><strong>Departure Date:</strong> " . $formData['departure_date'] . "</p>";
             $body .= "<p><strong>Arrival Date:</strong> " . (isset($formData['arrival_date']) ? $formData['arrival_date'] : '') . "</p>";
             $body .= "<p><strong>Departure Place:</strong> " . $formData['departure_place'] . "</p>";
