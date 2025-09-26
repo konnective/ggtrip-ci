@@ -165,8 +165,10 @@
 		.phone-group {
 			display: flex;
 		}
-		.country-code-select{
-			max-width: 103px;;
+
+		.country-code-select {
+			max-width: 103px;
+			;
 		}
 
 		@keyframes fly {
@@ -526,8 +528,8 @@
 								<div class="col-md-6">
 									<div class="phone-group">
 										<select name="country_code" class="form-select country-code-select" required>
-											<option value="+1">🇺🇸 +1</option>
-											<option value="+91" selected>🇮🇳 +91</option>
+											<option value="+1" selected>🇺🇸 +1</option>
+											<option value="+91">🇮🇳 +91</option>
 										</select>
 										<input type="tel"
 											class="form-control phone-input flex-grow-1"
@@ -536,78 +538,79 @@
 											required
 											maxlength="15" />
 									</div>
-									<!-- <div class="col-md-6">
-									<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required maxlength="12" />
-								</div> -->
-									<!-- <div class="col-md-6">
-									<label for="screen-shots">Upload Your Screenshot</label>
-									<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
-								</div>
-								<div class="col-md-6">
-									<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
-								</div> -->
 								</div>
 								<div class="text-center">
 									<button type="submit" class="btn-get-started">Get Your Fare In 10 Minutes</button>
 								</div>
 								<?= form_close() ?>
-								<div class="mt-4 text-sm text-center">
-									<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
-								</div>
+							</div>
+							<div class="mt-4 text-sm text-center">
+								<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
 							</div>
 
 							<!-- One Way Form -->
-							<div id="oneWayForm" style="display: none;">
-								<?= form_open('', 'class="ajax-form p-3 border rounded shadow-sm"') ?>
-								<input name="type" class="form-control" value="one-trip" hidden />
-								<!-- Departure Date Only -->
+						</div>
+						<div id="oneWayTripForm" style="display: none;">
+							<?= form_open('', 'class="ajax-form p-3 border rounded shadow-sm"') ?>
+							<input name="type" class="form-control" value="one-trip" hidden />
+							<!-- Departure Date Only -->
+							<div class="row g-2 mb-3">
+								<div class="col-md-12">
+									<input type="text" name="departure_date" placeholder="Departure Date" class="form-control custom-date-show" readonly required />
+								</div>
+
+								<!-- Single Route -->
+								<div class="row g-2">
+									<div class="col-md-6">
+										<input type="text" name="departure_place" placeholder="Departure place" class="form-control" required maxlength="200" />
+									</div>
+									<div class="col-md-6">
+										<input type="text" name="arrival_place" placeholder="Arrival place" class="form-control" required maxlength="200" />
+									</div>
+								</div>
+
 								<div class="row g-2 mb-3">
-									<div class="col-md-12">
-										<input type="text" name="departure_date" placeholder="Departure Date" class="form-control custom-date-show" readonly required />
+									<div class="col-md-6">
+										<input type="text" class="form-control mb-2" name="full_name" placeholder="Full Name" required maxlength="200" />
 									</div>
-
-									<!-- Single Route -->
-									<div class="row g-2">
-										<div class="col-md-6">
-											<input type="text" name="departure_place" placeholder="Departure place" class="form-control" required maxlength="200" />
-										</div>
-										<div class="col-md-6">
-											<input type="text" name="arrival_place" placeholder="Arrival place" class="form-control" required maxlength="200" />
+									<div class="col-md-6">
+										<input type="number" class="form-control" name="passengers" placeholder="Number Of Passengers" required max="500" />
+									</div>
+									<div class="col-md-6">
+										<input type="email" class="form-control mb-2" name="email" placeholder="Email Address" required maxlength="200" />
+									</div>
+									<div class="col-md-6">
+										<div class="phone-group">
+											<select name="country_code" class="form-select country-code-select" required>
+												<option value="+1" selected>🇺🇸 +1</option>
+												<option value="+91">🇮🇳 +91</option>
+											</select>
+											<input type="tel"
+												class="form-control phone-input flex-grow-1"
+												name="phone"
+												placeholder="Enter phone number"
+												required
+												maxlength="15" />
 										</div>
 									</div>
-
-									<div class="row g-2 mb-3">
-										<div class="col-md-6">
-											<input type="text" class="form-control mb-2" name="full_name" placeholder="Full Name" required maxlength="200" />
-										</div>
-										<div class="col-md-6">
-											<input type="number" class="form-control" name="passengers" placeholder="Number Of Passengers" required max="500" />
-										</div>
-										<div class="col-md-6">
-											<input type="email" class="form-control mb-2" name="email" placeholder="Email Address" required maxlength="200" />
-										</div>
-										<div class="col-md-6">
-											<input type="tel" class="form-control" name="phone" placeholder="Phone Number" required maxlength="12" />
-										</div>
-										<!-- <div class="col-md-6">
-											<label for="screen-shots">Upload Your Screenshot</label>
-											<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
-										</div>
-										<div class="col-md-6">
-											<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
-										</div> -->
+									<!-- <div class="col-md-6">
+										<label for="screen-shots">Upload Your Screenshot</label>
+										<input type="file" id="screen-shots" name="image" accept=".png, .jpg, .jpeg" />
 									</div>
-									<div class="text-center">
-										<button type="submit" class="btn-get-started">Get Your Fare In 10
-											Minutes</button>
-									</div>
+									<div class="col-md-6">
+										<textarea class="form-control mb-2" name="details" maxlength="500" placeholder="Additional Information" rows="2" col="3"></textarea>
+									</div> -->
 								</div>
-								<!-- Multi-City Form -->
-								<?= form_close() ?>
-
-								<div class="mt-4 text-sm text-center">
-									<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
+								<div class="text-center">
+									<button type="submit" class="btn-get-started">Get Your Fare In 10
+										Minutes</button>
 								</div>
+							</div>
+							<!-- Multi-City Form -->
+							<?= form_close() ?>
+
+							<div class="mt-4 text-sm text-center">
+								<p>24/7 Support | Zero IVR Wait | Our Team Is Always Here For You.</p>
 							</div>
 						</div>
 					</div>
@@ -1350,17 +1353,21 @@
 
 			const roundTripForm = document.getElementById("roundTripForm");
 			const oneWayForm = document.getElementById("oneWayForm");
+			const oneWayTripForm = document.getElementById("oneWayTripForm");
 
 			function toggleForms() {
 				if (roundTripRadio.checked) {
 					roundTripForm.style.display = "block";
-					oneWayForm.style.display = "none";
+					if (oneWayForm) oneWayForm.style.display = "none";
+					if (oneWayTripForm) oneWayTripForm.style.display = "none";
 				} else if (oneWayRadio.checked) {
 					roundTripForm.style.display = "none";
-					oneWayForm.style.display = "block";
-				} else if (multiCityRadio.checked) {
+					if (oneWayForm) oneWayForm.style.display = "none";
+					if (oneWayTripForm) oneWayTripForm.style.display = "block";
+				} else if (multiCityRadio && multiCityRadio.checked) {
 					roundTripForm.style.display = "none";
-					oneWayForm.style.display = "none";
+					if (oneWayForm) oneWayForm.style.display = "none";
+					if (oneWayTripForm) oneWayTripForm.style.display = "none";
 				}
 			}
 
@@ -1465,12 +1472,12 @@
 
 
 	<script>
-		document.getElementById('scrollTopBtn').addEventListener('click', function() {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth'
-			});
-		});
+		// document.getElementById('scrollTopBtn').addEventListener('click', function() {
+		// 	window.scrollTo({
+		// 		top: 0,
+		// 		behavior: 'smooth'
+		// 	});
+		// });
 
 		const today = new Date().toISOString().split('T')[0];
 		const arrivalInput = $('input[name="arrival_date"]');
@@ -1500,7 +1507,7 @@
 			const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 			const scrollPercent = (scrollTop / docHeight) * 100;
 
-			if (scrollPercent > 50 && !modalShown) {
+			if (scrollPercent > 90 && !modalShown) {
 				const myModal = new bootstrap.Modal(document.getElementById('flightDealModal'));
 				myModal.show();
 				modalShown = true;
