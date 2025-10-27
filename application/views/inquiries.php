@@ -5,6 +5,10 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Inquiry List</title>
+
+     	<!-- Favicons -->
+	<link href="<?= site_url() ?>assets/img/favicon.png" rel="icon">
+	<link href="<?= site_url() ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -34,6 +38,8 @@
                                                   <th scope="col">Departure Place</th>
                                                   <th scope="col">Arrival Place</th>
                                                   <th scope="col">Departure Date</th>
+                                                  <th scope="col">Message</th>
+                                                  <th scope="col">Url</th>
                                                   <th scope="col">Arrival Date</th>
                                                   <th scope="col">Created At</th>
                                              </tr>
@@ -49,6 +55,8 @@
                                                             <td><?php echo $item['departure_place']; ?></td>
                                                             <td><?php echo $item['arrival_place']; ?></td>
                                                             <td><?php echo $item['departure_date']; ?></td>
+                                                            <td><?php echo $item['message']; ?></td>
+                                                            <td><?php echo $item['url']; ?></td>
                                                             <td><?php echo $item['arrival_date']; ?></td>
                                                             <td><?php echo date('Y-m-d H:i', strtotime($item['created_at'])); ?></td>
                                                             <!-- <td>john.smith@email.com</td>

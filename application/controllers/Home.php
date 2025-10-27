@@ -5,6 +5,7 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
+		date_default_timezone_set("America/New_York");
 		if($this->input->is_ajax_request()) {
 			return $this->sendEmail();
 		} else {
@@ -18,7 +19,7 @@ class Home extends MY_Controller {
             $this->db->select('*');
             $this->db->from('inquiries');
             $this->db->order_by('id', 'DESC');
-            $query = $this->db->get(); 
+            $query = $this->db->get();
             $data['inquiries'] = $query->result_array();
             return $this->load->view('inquiries', $data);
 		}
@@ -93,6 +94,8 @@ class Home extends MY_Controller {
 				'full_name' => $this->input->post('full_name'),
 				'passengers' => $this->input->post('passengers'),
 				'email' => $this->input->post('email'),
+				'message' => $this->input->post('message'),
+				'url' => $this->input->post('url'),
                 'phone' => $this->input->post('country_code') . $this->input->post('phone'),
                 'created_at' => date('Y-m-d H:i:s'),
 			];
@@ -141,6 +144,8 @@ class Home extends MY_Controller {
             $body .= "<p><strong>Departure Place:</strong> " . $formData['departure_place'] . "</p>";
             $body .= "<p><strong>Arrival Place:</strong> " . $formData['arrival_place'] . "</p>";
             $body .= "<p><strong>Passengers:</strong> " . $formData['passengers'] . "</p>";
+            $body .= "<p><strong>Message:</strong> " . $formData['message'] . "</p>";
+            $body .= "<p><strong>Url:</strong> " . $formData['url'] . "</p>";
         }
 
         $body .= "<p><strong>Time:</strong> " . date('Y-m-d H:i:s') . "</p>";
