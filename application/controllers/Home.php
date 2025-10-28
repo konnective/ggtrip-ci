@@ -95,7 +95,7 @@ class Home extends MY_Controller {
 				'passengers' => $this->input->post('passengers'),
 				'email' => $this->input->post('email'),
 				'message' => $this->input->post('message'),
-				'url' => $this->input->post('url'),
+				'url' => current_url(),//$this->input->post('url'),
                 'phone' => $this->input->post('country_code') . $this->input->post('phone'),
                 'created_at' => date('Y-m-d H:i:s'),
 			];

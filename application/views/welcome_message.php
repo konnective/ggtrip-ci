@@ -728,9 +728,7 @@
 											maxlength="15" />
 									</div>
 								</div>
-								<div class="col-md-12">
-									<input type="text" class="form-control mb-2" name="url" placeholder="Enter URL" required maxlength="200" />
-								</div>
+								<input type="text" class="form-control mb-2" name="url" placeholder="Enter URL" hidden maxlength="200" />
 								<div class="col-md-12">
 									<textarea class="form-control" name="message" id="" placeholder="Message" rows="4" cols="50"></textarea>
 								</div>
@@ -975,9 +973,8 @@
 												maxlength="15" />
 										</div>
 									</div>
-									<div class="col-md-12">
-										<input type="text" class="form-control mb-2" name="url" placeholder="Enter URL" required maxlength="200" />
-									</div>
+									<input type="text" class="form-control mb-2" name="url" placeholder="Enter URL" hidden maxlength="200" />
+									
 									<div class="col-md-12">
 										<textarea class="form-control" name="message" id="" placeholder="Message" rows="4" cols="50"></textarea>
 									</div>
